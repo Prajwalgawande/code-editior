@@ -1,0 +1,12 @@
+.user{
+    padding:7px;
+}
+.user:hover{
+    background-color: rgb(229, 84, 6);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer
+}
+.title:hover{
+    color: red;
+}
