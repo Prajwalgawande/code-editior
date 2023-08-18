@@ -56,7 +56,7 @@ const Codesection = () => {
     try {
       const response = await fetch(url, options);
       const result = await response.text();
-      const output=JSON.parse(result).output;
+      const output = JSON.parse(result).output;
       setOutput(output);
     } catch (error) {
       console.error(error);
@@ -65,63 +65,80 @@ const Codesection = () => {
   };
   const handleCodeChange = (newCode) => {
     setCode(newCode);
-    console.log("code",code,newCode)
+    console.log("code", code, newCode)
   };
   const handleEditorDidMount = (editor, monaco) => {
     editorRef.current = editor;
   };
+
+  const lineHeight = 19; // Adjust this value if needed
+  const editorHeight = `calc(20vh - ${lineHeight}px)`;
+
   return (
 
     <>
       <div className="CodeSection py-4">
-       
-    <Container className="py-4  text-light">
-      <Form>
-        <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm="2">
-            Language:
-          </Form.Label>
-          <Col sm="10">
-            <Form.Control
-              as="select"
-              value={selectedLanguage}
-              onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="bg-dark text-light"
-            >
-              {languages.map((lang) => (
-                <option key={lang.id} value={lang.id}>
-                  {lang.name}
-                </option>
-              ))}
-            </Form.Control>
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm="2">
-            Code:
-          </Form.Label>
-          <Col sm="10">
-            <Form.Control
-              as="textarea"
-              rows={8}
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-              className="bg-dark text-light"
-            />
-          </Col>
-        </Form.Group>
-        <Button onClick={handleRunCode}>Run Code</Button>
-      </Form>
-      <Row className="mt-4">
-      <Form.Label column sm="2">
-            output:
-          </Form.Label><Col>
-              <pre className="output-text bg-dark text-light p-3">
-               {output}
+
+        <Container className="py-4  text-light">
+          <Form>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label column sm="2">
+                Language:
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control
+                  as="select"
+                  value={selectedLanguage}
+                  onChange={(e) => {
+                    setSelectedLanguage(e.target.value)
+                    setCode("Write code here")
+                  }}
+                  className="bg-dark text-light"
+                >
+                  {languages.map((lang) => (
+                    <option key={lang.id} value={lang.id}>
+                      {lang.name}
+                    </option>
+                  ))}
+                </Form.Control>
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label column sm="2">
+                Code:
+              </Form.Label>
+              <Col sm="10" className='overflow-hidden'>
+              <MonacoEditor
+                  language={selectedLanguage}
+                  theme="vs-dark"
+                  value={code}
+                  className="codebox editor-container verflow-hidden custom-scrollbar"
+                  options={{
+                    minimap: { enabled: false },
+                    fontSize: 14,
+                    wordWrap: 'on',
+                    cursorBlinking: 'smooth', // Adjust cursor blinking behavior
+                    cursorStyle: 'line',
+                  }}
+                  height={'200px'}
+                  onChange={handleCodeChange}
+                  editorDidMount={handleEditorDidMount}
+                />
+
+              </Col>
+            </Form.Group>
+            <Button className="customButton" onClick={handleRunCode}>Run Code</Button>
+          </Form>
+          <Row className="mt-4">
+            <Form.Label column sm="2">
+              output:
+            </Form.Label><Col>
+              <pre className="output-text bg-dark text-light p-3 outputBox">
+                {output}
               </pre>
             </Col>
           </Row>
-    </Container>
+        </Container>
       </div>
     </>
   )

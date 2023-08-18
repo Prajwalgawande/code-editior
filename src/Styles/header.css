@@ -1,12 +1,15 @@
 .user{
     padding:7px;
 }
-.user:hover{
-    background-color: rgb(229, 84, 6);
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer
+.navbarHighlight a:hover{
+    color:  rgb(245, 96, 15);
+    cursor: pointer;
+    text-decoration: none;
 }
 .title:hover{
-    color: red;
+    color:  rgb(229, 84, 6);
+}
+.logo{
+    /* border: 2px solid rgb(245, 96, 15);
+    border-radius: 50%; */
 }

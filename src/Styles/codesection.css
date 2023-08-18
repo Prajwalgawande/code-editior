@@ -1,9 +1,18 @@
-.CodeSection{
+.CodeSection {
     height: 100vh;
     width: 100vw;
     margin: 0;
     background-color: rgb(35, 33, 33);
 }
-.codebox{
+
+.codebox {
     height: 100vh;
+}
+
+.custom-scrollbar>.overflow-guardians-right {
+    display: none;
+}
+
+.custom-scrollbar>.overflow-guardians-bottom {
+    display: none;
 }

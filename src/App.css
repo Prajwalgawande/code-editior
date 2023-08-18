@@ -1,0 +1,10 @@
+*{
+    overflow: hidden;
+}
+.customButton{
+    background-color:  rgb(245, 96, 15);
+    border: none;
+}
+.customButton:hover{
+    background-color:  rgb(226, 84, 7);
+}

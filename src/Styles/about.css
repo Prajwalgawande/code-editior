@@ -1,0 +1,12 @@
+.aboutPage{
+    background-color:  rgb(35, 33, 33);
+    width: 100vw;
+    height: 100vh;
+}
+.AboutCard{
+    background-color: rgb(33,37,41);
+    color: white;
+}
+.AboutCard:hover{
+    color: rgb(226, 84, 7);
+}
