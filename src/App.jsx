@@ -1,12 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import React from 'react';
 import Dashboard from './Components/Dashboard'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
+import Home from './Components/Home';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import About from './Components/About';
 
 function App() {
- 
+
   return (
-    <Dashboard/>
+    <>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/editor" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 

@@ -1,0 +1,30 @@
+
+.dark-mode {
+  background-color: #292b2c; /
+}
+
+.text-light {
+  color: #ffffff; 
+}
+
+.heading {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.homepage{
+  height: 100vh;
+}
+.card1, .card2, .card3{
+  cursor: pointer;
+}
+
+.card1:hover{
+  background-color: rgb(226, 84, 7);
+}
+.card2:hover{
+  background-color: rgb(226, 84, 7);
+}
+.card3:hover{
+  background-color: rgb(226, 84, 7);
+}
+
