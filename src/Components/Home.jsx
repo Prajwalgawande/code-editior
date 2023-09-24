@@ -11,11 +11,15 @@ const Home = () => {
     <Header/>
         <div className="dark-mode">
       <Container className="py-4 text-light homepage">
-        <section id="welcome" className="mb-5">
-          <h1 className="heading">Welcome to the Code Editor</h1>
+        <section id="welcome" className="mb-2">
+          <h1 className="heading">Welcome to the Code Editor  <span className='fs-6 text-custom-color'>[Designed by Prajwal]</span></h1>
+         
           <p>Write and run your code easily using our intuitive code editor.</p>
+        <Link to="/editor">
+            {isSignedin?<Button className="customButton my-3">Open editior</Button>:
+            <Button className="customButton">Sign Up</Button>}
+          </Link>
         </section>
-
         <section id="features" className="mb-5">
           <h2 className="heading">Features</h2>
           <div className="row">
@@ -57,10 +61,6 @@ const Home = () => {
           <p>
             Ready to start coding? {isSignedin?"start coading":"Sign up now"} and experience the power of our code editor.
           </p>
-          <Link to="/editor">
-            {isSignedin?<Button className="customButton">Start Coading</Button>:
-            <Button className="customButton">Sign Up</Button>}
-          </Link>
         </section>
       </Container>
     </div>
