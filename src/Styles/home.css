@@ -11,9 +11,7 @@
   margin-top: 0;
   margin-bottom: 20px;
 }
-.homepage{
-  height: 100vh;
-}
+
 .card1, .card2, .card3{
   cursor: pointer;
 }
@@ -28,3 +26,6 @@
   background-color: rgb(226, 84, 7);
 }
 
+.text-custom-color {
+  color: rgb(245, 96, 15);
+}

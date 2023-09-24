@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import MonacoEditor from 'react-monaco-editor';
 import '../Styles/codesection.css'
 import { useRef } from 'react';
+import Loader from '../common/Loader'
 
 const Codesection = () => {
 
   const editorRef = useRef(null);
+  const [Loading, setLoading] = useState(false)
   const [output, setOutput] = useState(null);
   const [code, setCode] = useState('print("Hello, World!");'); // Initialize with some default code
   const [languages, setLanguages] = useState([]); // Array to store available languages
@@ -32,12 +32,12 @@ const Codesection = () => {
       const response = await fetch(url, options);
       const data = await response.json();
       setLanguages(data);
-      // console.log(data);// Store the available languages in the state
     } catch (error) {
       console.error(error);
     }
   };
   const handleRunCode = async () => {
+    setLoading(true);
     const url = 'https://online-code-compiler.p.rapidapi.com/v1/';
     const options = {
       method: 'POST',
@@ -62,6 +62,7 @@ const Codesection = () => {
       console.error(error);
       setOutput('Error occurred. Please check the console.');
     }
+    setLoading(false);
   };
   const handleCodeChange = (newCode) => {
     setCode(newCode);
@@ -71,8 +72,6 @@ const Codesection = () => {
     editorRef.current = editor;
   };
 
-  const lineHeight = 19; // Adjust this value if needed
-  const editorHeight = `calc(20vh - ${lineHeight}px)`;
 
   return (
 
@@ -133,9 +132,10 @@ const Codesection = () => {
             <Form.Label column sm="2">
               output:
             </Form.Label><Col>
+              {Loading?<Loader/>:
               <pre className="output-text bg-dark text-light p-3 outputBox">
                 {output}
-              </pre>
+              </pre>}
             </Col>
           </Row>
         </Container>
