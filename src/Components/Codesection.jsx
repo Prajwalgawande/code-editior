@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import 'prismjs/plugins/line-numbers/prism-line-numbers';
-import 'prismjs/themes/prism.css'; 
 import MonacoEditor from 'react-monaco-editor';
 import '../Styles/codesection.css'
 import { useRef } from 'react';
